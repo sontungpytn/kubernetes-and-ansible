@@ -15,12 +15,17 @@
         state: directory
         mode: 0755
 
+    - name: Check admin.conf file exists.
+      stat:
+        path: /etc/kubernetes/admin.conf
+      register: k8s_conf
     - name: copy admin.conf to user's kube config
       copy:
         src: /etc/kubernetes/admin.conf
-        dest: /home/centos/.kube/config
+        dest: /home/ubuntu/.kube/config
         remote_src: yes
-        owner: centos
+        owner: ubuntu
+      when: k8s_conf.stat.exists
 
     - name: install Pod network
       become: yes
