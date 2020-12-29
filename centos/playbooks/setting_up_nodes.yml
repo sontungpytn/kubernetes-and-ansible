@@ -43,7 +43,7 @@
     become: yes
 
   - name: Install docker
-    command: "yum install docker-ce -y --nobest"
+    command: "yum install docker-ce -y --allowerasing"
 
   - name: Installing required packages
     yum:
