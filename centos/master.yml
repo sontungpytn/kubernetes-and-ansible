@@ -22,7 +22,7 @@
     - name: copy admin.conf to user's kube config
       copy:
         src: /etc/kubernetes/admin.conf
-        dest: /home/ubuntu/.kube/config
+        dest: /home/centos/.kube/config
         remote_src: yes
         owner: ubuntu
       when: k8s_conf.stat.exists
